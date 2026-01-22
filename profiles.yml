@@ -1,0 +1,18 @@
+mcge:
+  target: duckdb_local
+  outputs:
+    duckdb_local:
+      type: duckdb
+      path: 'mcge.duckdb'
+      threads: 4
+      
+    snowflake_dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('SNOWFLAKE_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE') }}" # e.g. ACCOUNTADMIN or SYSADMIN
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE') }}" # e.g. COMPUTE_WH
+      database: "{{ env_var('SNOWFLAKE_DATABASE') }}" # e.g. MCGE_DEV
+      schema: public
+      threads: 4

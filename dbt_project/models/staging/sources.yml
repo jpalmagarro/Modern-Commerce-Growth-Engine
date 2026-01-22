@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: olist
+    schema: main  # For DuckDB, this is 'main'. For Snowflake, override in dbt_project.yml or assume public
+    tables:
+      - name: orders
+        meta:
+          external_location: "data/raw/orders.csv"
+      - name: customers
+        meta:
+          external_location: "data/raw/customers.csv"
+      - name: items
+        meta:
+          external_location: "data/raw/olist_order_items_dataset.csv"
+      - name: web_events
+        meta:
+          external_location: "data/raw/web_events.csv"
+      - name: marketing_spend
+        meta:
+          external_location: "data/raw/marketing_spend.csv"
+      - name: ab_test_groups
+        meta:
+          external_location: "data/raw/ab_test_groups.csv"
