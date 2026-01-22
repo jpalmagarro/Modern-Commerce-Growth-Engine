@@ -1,0 +1,29 @@
+.venv/
+
+# Python
+__pycache__/*
+*.py[cod]
+*.so
+.venv/*
+.env/*
+
+# dbt
+dbt_project/target/*
+dbt_project/dbt_packages/*
+dbt_project/logs/*
+target/*
+dbt_packages/*
+logs/*
+
+# Data (Sensitive & Large files)
+data/
+*.duckdb
+*.duckdb.wal
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
