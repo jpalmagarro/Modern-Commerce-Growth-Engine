@@ -23,3 +23,13 @@ models:
     columns:
       - name: date
       - name: channel
+
+  - name: fact_orders
+    description: "Transactional fact table linked to session attribution."
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: session_id
+        description: "Linked session where the purchase occurred."
