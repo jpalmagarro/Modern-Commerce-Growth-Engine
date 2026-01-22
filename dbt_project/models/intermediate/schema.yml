@@ -1,0 +1,15 @@
+
+version: 2
+
+models:
+  - name: int_sessions_aggregated
+    description: "Sessionized view of web events. Groups events into sessions based on 30-min inactivity windows."
+    columns:
+      - name: session_id
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+      - name: session_start_at
+      - name: is_converted
+        description: "1 if session resulted in an order, 0 otherwise"
