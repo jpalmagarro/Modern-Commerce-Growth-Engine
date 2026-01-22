@@ -28,3 +28,8 @@ data/
 # OS
 .DS_Store
 Thumbs.db
+analytics_export/
+
+
+*.md
+!README.md
