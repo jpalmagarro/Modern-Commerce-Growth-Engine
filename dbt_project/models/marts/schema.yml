@@ -1,0 +1,25 @@
+
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension with RFM scores."
+    columns:
+      - name: customer_unique_id
+        tests:
+          - unique
+          - not_null
+          
+  - name: fact_sessions
+    description: "Fact table for User Sessions."
+    columns:
+      - name: session_id
+        tests:
+          - unique
+          - not_null
+
+  - name: fact_daily_marketing
+    description: "Daily aggregated view of marketing spend vs attribution."
+    columns:
+      - name: date
+      - name: channel
