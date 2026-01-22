@@ -1,0 +1,35 @@
+
+version: 2
+
+models:
+  - name: stg_olist_orders
+    description: "Staging model for Olist Orders. Filters only active orders."
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: "Order status (delivered, shipped, etc.)"
+
+  - name: stg_olist_customers
+    description: "Staging model for Olist Customers. Maps customer_id to unique_id."
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_web_events
+    description: "Staging model for synthetic Web Events. Logs of user navigation."
+    columns:
+      - name: event_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_marketing_spend
+    description: "Staging model for Marketing Spend."
+    columns:
+      - name: date
+      - name: source
