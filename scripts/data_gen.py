@@ -238,13 +238,10 @@ def generate_marketing_spend(all_events):
     
     return daily_stats[['date', 'source', 'cost', 'sessions']]
 
-def generate_ab_test_groups(df_orders):
+def generate_ab_test_groups(all_events):
     print("Generating A/B test groups...")
-    # Get all unique users from the orders (and ghosts if possible, but let's stick to known users)
-    # Actually, we should assign for ALL unique IDs in the Customers table to be comprehensive
-    # But for this scope, let's use the ones we have in the orders df
-    
-    unique_ids = df_orders['customer_unique_id'].unique()
+    # Get all unique users from ALL events (buyers + ghosts)
+    unique_ids = all_events['user_id'].unique()
     
     groups = []
     for uid in unique_ids:
@@ -275,7 +272,7 @@ def main():
     marketing_df = generate_marketing_spend(all_events)
     
     # 6. A/B Test Groups
-    ab_df = generate_ab_test_groups(df_orders)
+    ab_df = generate_ab_test_groups(all_events)
     
     # 7. Save
     print("Saving files...")
