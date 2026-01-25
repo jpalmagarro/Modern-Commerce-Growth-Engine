@@ -24,10 +24,10 @@ joined as (
         coalesce(s.conversions, 0) as attribution_conversions,
         
         -- Calculated Metrics
-        case when coalesce(sp.cost,0) > 0 then 
-             coalesce(s.conversions, 0) / sp.cost 
+        case when coalesce(s.conversions,0) > 0 then 
+             coalesce(sp.cost, 0) / s.conversions 
              else 0 
-        end as cac_inverse -- Simplified metric as we lack revenue for ROAS
+        end as calculated_cac -- Cost / Conversions
         
     from sessions s
     full outer join spend sp 

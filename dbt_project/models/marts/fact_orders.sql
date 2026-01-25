@@ -11,15 +11,26 @@ sessions as (
     select * from {{ ref('fact_sessions') }}
 ),
 
+items as (
+    select
+        order_id,
+        sum(price) as order_value,
+        count(order_item_id) as items_count
+    from {{ ref('stg_olist_items') }}
+    group by 1
+),
+
 -- Join Orders to Customers to get Unique ID
 orders_enriched as (
     select 
         o.order_id,
         o.customer_id,
         c.customer_unique_id,
-        o.purchase_at
+        o.purchase_at,
+        coalesce(i.order_value, 0) as revenue
     from orders o
     join customers c on o.customer_id = c.customer_id
+    left join items i on o.order_id = i.order_id
 ),
 
 final as (
@@ -35,6 +46,7 @@ final as (
         
         -- Measures
         o.purchase_at,
+        o.revenue,
         1 as is_order
         
     from orders_enriched o

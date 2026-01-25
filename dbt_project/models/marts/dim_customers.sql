@@ -39,6 +39,18 @@ final as (
         
     from customers c
     left join customer_orders co on c.customer_unique_id = co.customer_unique_id
+),
+
+ab_groups as (
+    select * from {{ ref('stg_ab_test_groups') }}
+),
+
+final_with_ab as (
+    select
+        f.*,
+        coalesce(ab.ab_group, 'control') as ab_group -- Default to control if missing (though we fixed generation)
+    from final f
+    left join ab_groups ab on f.customer_unique_id = ab.customer_unique_id
 )
 
-select * from final
+select * from final_with_ab
