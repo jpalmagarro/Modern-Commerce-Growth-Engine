@@ -6,15 +6,20 @@ orders as (
     select * from {{ ref('stg_olist_orders') }}
 ),
 
+global_reference as (
+    -- Reference date for recency calculations (based on last order in dataset)
+    select max(purchase_at) as snapshot_date from orders
+),
+
 customer_orders as (
     select
         c.customer_unique_id,
         count(o.order_id) as total_orders,
         min(o.purchase_at) as first_order_at,
         max(o.purchase_at) as last_order_at,
-        -- Monetary (Assuming we would join with items/payments here, keeping simple for now)
-        -- We don't have price in stg_orders, so we count frequency/recency mainly
-        date_diff('day', max(o.purchase_at), current_date) as recency_days
+        
+        -- Recency calculated relative to snapshot date
+        date_diff('day', max(o.purchase_at), (select snapshot_date from global_reference)) as recency_days
         
     from customers c
     join orders o on c.customer_id = o.customer_id
