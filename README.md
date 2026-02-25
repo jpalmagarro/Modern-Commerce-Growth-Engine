@@ -1,9 +1,9 @@
 # Modern Commerce Growth Engine (MCGE)
-### *Unifying Backend & Frontend Data for Growth Accounting*
+**An end-to-end Data Engineering & BI pipeline unifying frontend and backend data to optimize E-commerce growth.**
 
-> **Author:** Jill Palma Garro  
-> **Role:** Analytics Engineer & Business Partner  
-> **Tech Stack:** Python, Snowflake (or DuckDB), dbt Core, Power BI.
+![Python](https://img.shields.io/badge/Python-3.9+-blue.svg) ![DuckDB](https://img.shields.io/badge/DuckDB-yellow.svg) ![dbt](https://img.shields.io/badge/dbt-Core-orange.svg) ![Power BI](https://img.shields.io/badge/Power_BI-yellow.svg)
+
+
 
 ---
 
@@ -107,6 +107,19 @@ Merging `fact_orders` with `marketing_spend` isn't straightforward because they 
 
 ---
 
+## 📁 Repository Structure
+
+```text
+├── data/               # Raw and exported target datasets (CSVs)
+├── dbt_project/        # dbt SQL models (stg, int, fact, dim)
+├── powerBi/            # Power BI dashboard files (.pbix)
+├── scripts/            # Python data generation and execution scripts
+├── requirements.txt    # Python dependencies
+└── README.md
+```
+
+---
+
 ## 5. 🚀 How to Run This Project
 
 This project is built to be reproducible. You can run it locally using **DuckDB** (no cloud credentials needed).
@@ -114,8 +127,8 @@ This project is built to be reproducible. You can run it locally using **DuckDB*
 ### Data Setup
 1.  **Clone the repo:**
     ```bash
-    git clone https://github.com/[your-username]/MCGE.git
-    cd MCGE
+    git clone https://github.com/jpalmagarro/Modern-Commerce-Growth-Engine.git
+    cd Modern-Commerce-Growth-Engine
     ```
 2.  **Install Dependencies:**
     ```bash
@@ -141,4 +154,20 @@ This project is built to be reproducible. You can run it locally using **DuckDB*
 5.  **Explore:** Connect DBeaver or Power BI to `mcge.duckdb` (or use the exported CSVs in `data/export/`).
 
 ---
-*Built using the Brazilian E-Commerce Public Dataset Dataset by Olist.*
+
+## 💻 Tech Stack
+
+*   **Languages**: Python, SQL, DAX
+*   **Data Warehouse**: Snowflake, DuckDB
+*   **Transformation**: dbt Core
+*   **Visualization**: Power BI
+
+---
+
+## 👩‍💻 Author
+
+**Name**: Jill Palma Garro  
+**GitHub**: [@jpalmagarro](https://github.com/jpalmagarro)  
+**LinkedIn**: [jpalmagarro](https://www.linkedin.com/in/jpalmagarro/)
+
+*Built using the Brazilian E-Commerce Public Dataset by Olist.*
