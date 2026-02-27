@@ -3,7 +3,7 @@
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue.svg) ![DuckDB](https://img.shields.io/badge/DuckDB-yellow.svg) ![dbt](https://img.shields.io/badge/dbt-Core-orange.svg) ![Power BI](https://img.shields.io/badge/Power_BI-yellow.svg)
 
-
+[👉 Click here to watch the 3-Minute Project Presentation & Findings](https://www.youtube.com/watch?v=KCa8UfqvwgE)
 
 ---
 
